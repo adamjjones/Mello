@@ -16,11 +16,11 @@ body {
   background-color: #94c93d;
 }
 
-.navbar {
+div .navbar {
   background-color: yellow;
   border-bottom: 2px solid black;
   /* font-family: 'Cedarville Cursive', cursive; */
-  font-size: 1.5rem;
+  font-size: 1rem;
   /* height: 20px;
   padding: 30px; */
 }
@@ -29,7 +29,7 @@ body {
 }
 
 .navbar-link {
-  height: 15px;
+  height: 30px;
   border-radius: 5px;
 }
 
@@ -39,19 +39,19 @@ body {
   /* /* margin-left: 200px;
   border-radius: 5px; */
 }
-*/ #create {
+#create {
   float: right;
-  background-color: #ed1a37;
-  height: 20px;
+  /* height: 20px; */
   border-radius: 5px;
   margin-left: 5px;
 }
 
 #login {
-  background-color: #ed1a37;
-  height: 20px;
+  float: right;
+
   border-radius: 5px;
   margin-left: 5px;
+  margin-bottom: 10px;
 }
 
 .title {

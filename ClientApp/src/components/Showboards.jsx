@@ -7,6 +7,10 @@ const Showboards = props => {
     <div>
       <NavBar {...props} />
       <h1>Available Boards</h1>
+      <div>
+        <div className="shown-boards">Recently Viewed</div>
+        <div className="shown-boards">Personal Boards</div>
+      </div>
       <section className="boards">
         {/* will be dynamically generated later */}
         <div className="placeholder"></div>

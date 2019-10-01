@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Mello.Models;
 
 namespace mello
 {
@@ -29,7 +30,7 @@ namespace mello
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
 #warning Be sure to update to your correct connection string to the point to the correct database
-        var conn = "server=localhost;database=SdgTemplate";
+        var conn = "server=localhost;database=Boards";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
@@ -44,5 +45,8 @@ namespace mello
     {
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
+
+    public DbSet<Boards> Boards {get; set;}
+    public DbSet<Cards> Cards {get; set;}
   }
 }

@@ -4,39 +4,42 @@ import { Link } from 'react-router-dom'
 const NavBar = props => {
   console.log('props', props)
   return (
-    <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">Navigation</a>
+    <div>
+      <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Navigation</a>
 
-        <div class="navbar-dropdown">
-          <Link to="/" class="navbar-item">
-            <span>
-              <i className="fas fa-home"></i>
-              Home
-            </span>
-          </Link>
-
-          <Link to="/Showboards" class="navbar-item">
-            <span>
-              <i class="fas fa-clipboard-list"></i>
-              <span>Boards</span>
-            </span>
-          </Link>
-
-          <div>
-            <Link to="/ActiveBoard" class="navbar-item">
+          <div class="navbar-dropdown">
+            <Link to="/" class="navbar-item">
               <span>
-                <i className="fas fa-plus"></i>
-                Create
+                <i className="fas fa-home"></i>
+                Home
               </span>
             </Link>
-          </div>
 
-          <hr class="navbar-divider" />
-          <div class="navbar-item">Version 0.7.5</div>
+            <Link to="/Showboards" class="navbar-item">
+              <span>
+                <i class="fas fa-clipboard-list"></i>
+                <span>Boards</span>
+              </span>
+            </Link>
+
+            <div>
+              <Link to="/ActiveBoard" class="navbar-item">
+                <span>
+                  <i className="fas fa-plus"></i>
+                  Create
+                </span>
+              </Link>
+            </div>
+
+            <hr class="navbar-divider" />
+            <div class="navbar-item">Version 0.7.5</div>
+          </div>
         </div>
-      </div>
-    </nav>
+        <button id="login">Sign Up or Login</button>
+      </nav>
+    </div>
   )
 }
 

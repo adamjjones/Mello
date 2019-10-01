@@ -30,10 +30,6 @@ const HomePage = props => {
           </Route>
         </Switch>
       </Router>
-      <div className="home-content">
-        <div className="shown-boards">Recently Viewed</div>
-        <div className="shown-boards">Personal Boards</div>
-      </div>
     </div>
   )
 }

@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Mello
+namespace Mello.Models
 {
 
   public class Boards
