@@ -13,10 +13,17 @@ body {
   background-image: url('images/mello-background.jpg');
   background-size: 100% 100%;
   width: 100%;
-  background-color: #94c93d;
+  color: white;
 }
 
-div .navbar {
+h1,
+h2 {
+  color: white;
+  font-size: 200%;
+}
+
+p,
+div div .navbar {
   background-color: yellow;
   border-bottom: 2px solid black;
   /* font-family: 'Cedarville Cursive', cursive; */
@@ -35,40 +42,25 @@ div .navbar {
 
 .navbar-item {
   background-color: white;
-
-  /* /* margin-left: 200px;
-  border-radius: 5px; */
-}
-#create {
-  float: right;
-  /* height: 20px; */
-  border-radius: 5px;
-  margin-left: 5px;
 }
 
-#login {
+.login-main {
   float: right;
-
   border-radius: 5px;
   margin-left: 5px;
   margin-bottom: 10px;
+}
+
+@media (max-width: 1023px) {
+  .login-main {
+    display: none;
+  }
 }
 
 .title {
   display: flex;
   justify-content: center;
   margin-left: 20rem;
-}
-
-.big-buttons {
-  margin: 5rem 2rem 2rem 2rem;
-  background-color: #0d82c6;
-  width: 150px;
-  height: 100px;
-}
-
-.big-buttons:hover {
-  background-color: #026aa7;
 }
 
 .boards {
@@ -88,13 +80,13 @@ div .navbar {
   background-color: #abc93d;
 }
 
-.home-content {
+/* .home-content {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   color: white;
   margin-left: 15rem;
-}
+} */
 
 .shown-boards {
   margin-top: 10rem;

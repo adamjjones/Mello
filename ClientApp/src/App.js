@@ -5,6 +5,7 @@ import ActiveBoard from './components/ActiveBoard'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import './components/index.css'
 import 'bulma/css/bulma.css'
+// import './scss/custom.scss'
 
 class App extends Component {
   render() {

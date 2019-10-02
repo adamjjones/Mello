@@ -39,6 +39,7 @@ namespace mello
       {
         c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
       });
+      services.AddDbContext<DatabaseContext>();
 
       // In production, the React files will be served from this directory
       services.AddSpaStaticFiles(configuration =>

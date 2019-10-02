@@ -34,10 +34,15 @@ const NavBar = props => {
             </div>
 
             <hr class="navbar-divider" />
-            <div class="navbar-item">Version 0.7.5</div>
+            <div class="navbar-item">
+              <button className="login">Sign Up or Login</button>
+            </div>
           </div>
         </div>
-        <button id="login">Sign Up or Login</button>
+        <div>
+          <span>Mello</span>
+        </div>
+        <button className="login-main">Sign Up or Login</button>
       </nav>
     </div>
   )
