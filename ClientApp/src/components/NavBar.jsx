@@ -5,27 +5,31 @@ const NavBar = props => {
   console.log('props', props)
   return (
     <div>
-      <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Navigation</a>
+      <nav
+        className="navbar"
+        role="navigation"
+        aria-label="dropdown navigation"
+      >
+        <div className="navbar-item has-dropdown is-hoverable">
+          <a className="navbar-link">Navigation</a>
 
-          <div class="navbar-dropdown">
-            <Link to="/" class="navbar-item">
+          <div className="navbar-dropdown">
+            <Link to="/" className="navbar-item">
               <span>
                 <i className="fas fa-home"></i>
                 Home
               </span>
             </Link>
 
-            <Link to="/Showboards" class="navbar-item">
+            <Link to="/Showboards" className="navbar-item">
               <span>
-                <i class="fas fa-clipboard-list"></i>
+                <i className="fas fa-clipboard-list"></i>
                 <span>Boards</span>
               </span>
             </Link>
 
             <div>
-              <Link to="/ActiveBoard" class="navbar-item">
+              <Link to="/ActiveBoard" className="navbar-item">
                 <span>
                   <i className="fas fa-plus"></i>
                   Create
@@ -33,13 +37,13 @@ const NavBar = props => {
               </Link>
             </div>
 
-            <hr class="navbar-divider" />
-            <div class="navbar-item">
+            <hr className="navbar-divider" />
+            <div className="navbar-item">
               <button className="login">Sign Up or Login</button>
             </div>
           </div>
         </div>
-        <div>
+        <div className="title">
           <span>Mello</span>
         </div>
         <button className="login-main">Sign Up or Login</button>
@@ -49,22 +53,22 @@ const NavBar = props => {
 }
 
 {
-  /* <nav className={`top-nav ${props.transparent ? 'top-nav-transparent ' : ''}`}
+  /* <nav classNameName={`top-nav ${props.transparent ? 'top-nav-transparent ' : ''}`}
                   >
                     <Link to="/">
                       
                     </Link>
                     
-                    <span className="title">
+                    <span classNameName="title">
                       <span>Mello</span>
                       <span>
-                        <span className="nav-buttons-right">
+                        <span classNameName="nav-buttons-right">
                           
           
                           <button id="login">
                             <span>
                               <a href="#">
-                                <i className="fas fa-sign-in-alt"></i>
+                                <i classNameName="fas fa-sign-in-alt"></i>
                               </a>
                             </span>
                           </button>
@@ -73,7 +77,7 @@ const NavBar = props => {
                     </span>
                   </nav> */
 }
-//   <button class="modal-close is-large" aria-label="close"></button>
+//   <button className="modal-close is-large" aria-label="close"></button>
 //  </div>
 
 export default NavBar

@@ -11,7 +11,7 @@ import NavBar from './NavBar'
 import Showboards from './Showboards'
 import ActiveBoard from './ActiveBoard'
 
-const HomePage = props => {
+const HomePage = ({ props }) => {
   return (
     <div>
       <Router>
