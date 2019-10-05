@@ -33,9 +33,24 @@ div .navbar {
   border-bottom: 2px solid black;
   /* font-family: 'Cedarville Cursive', cursive; */
   font-size: 1rem;
-  /* height: 20px;
-  padding: 30px; */
+  /* height: 20px; */
+  /* padding: 30px; */
 }
+
+@media (max-width: 300px) {
+  div .navbar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .title span {
+    display: flex;
+    flex-direction: row;
+    flex-flow: nowrap;
+    margin-left: 10rem;
+  }
+}
+
 .top-nav-transparent {
   opacity: 0.5;
 }
@@ -47,10 +62,12 @@ div .navbar {
 
 .navbar-item {
   background-color: white;
+  /* height: 40px; */
 }
 
 .login-main {
   float: right;
+  height: 40px;
   border-radius: 5px;
   margin-left: 5px;
   margin-bottom: 10px;
