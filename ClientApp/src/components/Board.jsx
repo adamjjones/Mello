@@ -4,7 +4,7 @@ import axios from 'axios'
 import Card from './Card'
 import KeyboardEventHandler from 'react-keyboard-event-handler'
 
-const ActiveBoard = props => {
+const Board = props => {
   const [cardOpen, setCardOpen] = useState(false)
   const [cards, setcards] = useState([])
   const createCard = async () => {
@@ -15,6 +15,7 @@ const ActiveBoard = props => {
       })
       .then(resp => {
         console.log(resp)
+        setcards([...cards, resp.data])
       })
   }
 
@@ -76,16 +77,16 @@ const ActiveBoard = props => {
       <NavBar {...props} />
       <button
         onClick={() => {
-          addCard()
+          createCard()
         }}
       >
         Create card
       </button>
       {console.log('cards', cards)}
       {cards.map(card => {
-        return <Card card={card} />
+        return <Card key={card.id} card={card} />
       })}
     </div>
   )
 }
-export default ActiveBoard
+export default Board

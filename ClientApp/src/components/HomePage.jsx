@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom'
 import NavBar from './NavBar'
 import Showboards from './Showboards'
-import ActiveBoard from './ActiveBoard'
+import Board from './Board'
 
 const HomePage = ({ props }) => {
   return (
@@ -19,11 +19,11 @@ const HomePage = ({ props }) => {
           <Route path="/" exact>
             <NavBar {...props} />
           </Route>
-          <Route path="/ActiveBoard" exact>
-            <ActiveBoard {...props} transparent={true} />
+          <Route path="/Board" exact>
+            <Board {...props} transparent={true} />
           </Route>
           <Route path="/Showboards" exact>
-            <Showboards {...props} />>
+            <Showboards {...props} />
           </Route>
           <Route>
             <Redirect to="/" />

@@ -6,7 +6,7 @@ const card = () => {
       className="card"
       style={{
         marginBottom: '10px',
-        backgroundColor: `hsla(200, 50%, 50%, 0.5)`,
+        backgroundColor: `hsla(200, 50%, 50%, 0.8)`,
         width: '200px',
         height: '100px'
       }}

@@ -44,7 +44,7 @@ const Showboards = ({ props }) => {
       </div>
       <section className="boards">
         {/* will be dynamically generated later */}
-        <Link to="/ActiveBoard">
+        <Link to="/Board">
           <p className="placeholder">Board 1</p>
         </Link>
         <div className="placeholder"></div>

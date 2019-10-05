@@ -29,7 +29,7 @@ const NavBar = props => {
             </Link>
 
             <div>
-              <Link to="/ActiveBoard" className="navbar-item">
+              <Link to="/Board" className="navbar-item">
                 <span>
                   <i className="fas fa-plus"></i>
                   Create
