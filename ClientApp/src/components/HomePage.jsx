@@ -25,6 +25,7 @@ const HomePage = ({ props }) => {
           <Route path="/Showboards" exact>
             <Showboards {...props} />
           </Route>
+          <Route path="/Boards/:id" component={Board} exact></Route>
           <Route>
             <Redirect to="/" />
           </Route>

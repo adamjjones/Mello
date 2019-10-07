@@ -37,7 +37,7 @@ div .navbar {
   /* padding: 30px; */
 }
 
-@media (max-width: 300px) {
+@media (max-width: 450px) {
   div .navbar {
     display: flex;
     justify-content: center;
@@ -45,9 +45,9 @@ div .navbar {
 
   .title span {
     display: flex;
-    flex-direction: row;
-    flex-flow: nowrap;
-    margin-left: 10rem;
+    justify-content: center;
+    margin-left: 13rem;
+    width: 100px;
   }
 }
 
@@ -83,12 +83,12 @@ div .navbar {
   .login {
     display: none;
   }
-}
 
-.title {
-  display: flex;
-  justify-content: center;
-  /* margin-right: 20rem; */
+  .title {
+    display: flex;
+    justify-content: center;
+    /* margin-right: 20rem; */
+  }
 }
 
 @media (max-width: 1023px) {

@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from './NavBar'
 import axios from 'axios'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import ReactDOM from 'react-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect
+} from 'react-router-dom'
 
 const Showboards = ({ props }) => {
   let [Boards, setBoards] = useState({})
+  const [moveToBoard, setMoveToBoard] = useState(false)
+  const [newBoard, setNewBoard] = useState(null)
   const createBoard = async () => {
     await axios
       .post('https://localhost:5001/api/Boards', {
@@ -12,12 +21,25 @@ const Showboards = ({ props }) => {
         category: 'something else'
       })
       .then(resp => {
-        console.log(resp)
+        console.log(resp.data)
+        // redirect to the new page using javascript, react
+        setNewBoard(resp.data)
       })
     const handleClick = event => {
       event.target.classList.add('click-state')
     }
     return <input onClick={handleClick} type="text" />
+  }
+
+  const DeleteBoard = async () => {
+    await axios
+      .delete(`https://localhost:5001/api/Boards`, {
+        name: 'something',
+        category: 'something else'
+      })
+      .then(resp => {
+        console.log(resp)
+      })
   }
 
   const displayBoards = async () => {
@@ -53,6 +75,8 @@ const Showboards = ({ props }) => {
         <div className="placeholder"></div>
         <div className="placeholder"></div>
       </section>
+      {/* <Link to={`Boards/${Boards.id}`}> */}
+      {newBoard ? <Redirect to={`/Boards/${newBoard.id}`} /> : null}
       <button
         className="createboard placeholder"
         onClick={() => {
@@ -60,6 +84,15 @@ const Showboards = ({ props }) => {
         }}
       >
         Create Board
+      </button>
+      {/* </Link> */}
+      <button
+        className="createboard placeholder"
+        onClick={() => {
+          DeleteBoard()
+        }}
+      >
+        Delete Board
       </button>
     </div>
   )
