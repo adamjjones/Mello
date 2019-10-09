@@ -7,9 +7,11 @@ import KeyboardEventHandler from 'react-keyboard-event-handler'
 const Board = props => {
   const [cardOpen, setCardOpen] = useState(false)
   const [cards, setcards] = useState([])
+  const [deleteCards, setDeleteCards] = useState(false)
+  const [deleteValue, setDeleteValue] = useState('')
   const createCard = async () => {
     await axios
-      .post('https://localhost:5001/api/Cards', {
+      .get('https://localhost:5001/api/Cards', {
         name: 'A card',
         category: 'Cards'
       })
@@ -19,28 +21,17 @@ const Board = props => {
       })
   }
 
-  // const saveCard = event => {
-  //   return (
-  //     <div
-  //       className="card"
-  //       style={{
-  //         marginBottom: '10px',
-  //         backgroundColor: `rbg(200, 200, 200)`,
-  //         opacity: 0.5,
-  //         width: '200px',
-  //         height: '100px'
-  //       }}
-  //     >
-  //       <input
-  //         type="submit"
-  //         onKeyDown={event => {
-  //           event.preventDefault()
-  //         }}
-  //       />
-  //       {/* <p>{event.target}</p> */}
-  //     </div>
-  //   )
-  // }
+  const deleteCard = async () => {
+    await axios
+      .delete('https://localhost:5001/api/Cards', {
+        id: 1,
+        Name: 'something'
+      })
+      .then(resp => {
+        console.log(resp.data)
+        // setNewBoard(resp.data)
+      })
+  }
 
   const addCard = () => {
     setcards([...cards, { id: 0, name: 'new Card', description: 'desc' }])
@@ -49,27 +40,6 @@ const Board = props => {
   const toggleDisplay = () => {
     setCardOpen(!cardOpen)
     console.log('clicked', cardOpen)
-  }
-
-  const displayNewCard = () => {
-    if (cardOpen) {
-      return (
-        <div
-          className="card"
-          style={{
-            marginBottom: '10px',
-            backgroundColor: `hsla(200, 50%, 50%, 0.5)`,
-            width: '200px',
-            height: '100px'
-          }}
-        >
-          <input />
-          <input type="submit" />
-        </div>
-      )
-    } else {
-      return <></>
-    }
   }
 
   return (
@@ -87,6 +57,27 @@ const Board = props => {
         return <Card key={card.id} card={card} />
       })}
     </div>
+
+    // {deleteValue.lenght >= 0 && <div className="cards">{cardInput}</div>}
+    //   <button
+    //     className="add-text"
+    //     onClick={event => {
+    //       console.log(deleteValue)
+    //       return setDeleteCard(true)
+    //     }
+    //   }
+    //   >
+    // Delete
+    //   </button>
+    // {deleteValue.length >= 0 && cardInput}
+    // <button
+    //   className="add-text"
+    //   onClick={(e) => {
+    //     console.log(deleteValue)
+    //     return setDeleteCard(true)
+    //   }}>
+    //   Delete
+    // </button>
   )
 }
 export default Board

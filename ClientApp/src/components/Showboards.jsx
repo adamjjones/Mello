@@ -22,7 +22,6 @@ const Showboards = ({ props }) => {
       })
       .then(resp => {
         console.log(resp.data)
-        // redirect to the new page using javascript, react
         setNewBoard(resp.data)
       })
     const handleClick = event => {
