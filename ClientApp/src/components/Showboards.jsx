@@ -14,6 +14,7 @@ const Showboards = ({ props }) => {
   let [Boards, setBoards] = useState({})
   const [moveToBoard, setMoveToBoard] = useState(false)
   const [newBoard, setNewBoard] = useState(null)
+  let [generateBoards, setgenerateBoards] = useState([])
   const createBoard = async () => {
     await axios
       .post('https://localhost:5001/api/Boards', {
@@ -55,6 +56,13 @@ const Showboards = ({ props }) => {
       })
   }
 
+  // const mapBoards = async () => {
+  //   setgenerateBoards = await axios.get(`https://localhost:5001/api/Boards`)
+  //   .then(response => {
+  //     setgenerateBoards(response)
+  //       }
+  //   }
+
   return (
     <div>
       <NavBar {...props} />
@@ -64,15 +72,18 @@ const Showboards = ({ props }) => {
         <div className="shown-boards">Personal Boards</div>
       </div>
       <section className="boards">
+        {generateBoards.map(b => {
+          return <p>It works</p>
+        })}
         {/* will be dynamically generated later */}
-        <Link to="/Board">
+        {/* <Link to="/Board">
           <p className="placeholder">Board 1</p>
-        </Link>
+        </Link> */}
+        {/* <div className="placeholder"></div>
         <div className="placeholder"></div>
         <div className="placeholder"></div>
         <div className="placeholder"></div>
-        <div className="placeholder"></div>
-        <div className="placeholder"></div>
+        <div className="placeholder"></div> */}
       </section>
       {/* <Link to={`Boards/${Boards.id}`}> */}
       {newBoard ? <Redirect to={`/Boards/${newBoard.id}`} /> : null}

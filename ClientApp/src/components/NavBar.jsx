@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Auth from './auth'
 
 const NavBar = props => {
   console.log('props', props)
@@ -39,14 +40,28 @@ const NavBar = props => {
 
             <hr className="navbar-divider" />
             <div className="navbar-item">
-              <button className="login">Sign Up or Login</button>
+              <button
+                className="login"
+                onClick={() => {
+                  Auth.login()
+                }}
+              >
+                Sign Up or Login
+              </button>
             </div>
           </div>
         </div>
         <div className="title">
           <span>Mello</span>
         </div>
-        <button className="login-main">Sign Up or Login</button>
+        <button
+          className="login-main"
+          onClick={() => {
+            Auth.login()
+          }}
+        >
+          Sign Up or Login
+        </button>
       </nav>
     </div>
   )
