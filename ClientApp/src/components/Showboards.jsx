@@ -32,14 +32,7 @@ const Showboards = ({ props }) => {
   }
 
   const DeleteBoard = async () => {
-    await axios
-      .delete(`https://localhost:5001/api/Boards`, {
-        name: 'something',
-        category: 'something else'
-      })
-      .then(resp => {
-        console.log(resp)
-      })
+    await axios.delete(`https://localhost:5001/api/Boards/34`)
   }
 
   const displayBoards = async () => {
@@ -47,6 +40,7 @@ const Showboards = ({ props }) => {
       .get('https://localhost:5001/api/Boards')
       .then(resp => {
         setBoards(resp)
+        setgenerateBoards(resp)
         console.log(Boards)
         return (
           <div>
@@ -56,12 +50,18 @@ const Showboards = ({ props }) => {
       })
   }
 
-  // const mapBoards = async () => {
-  //   setgenerateBoards = await axios.get(`https://localhost:5001/api/Boards`)
+  // const loadBoards = async () => {
+  //   await axios.get(`https://localhost:5001/api/Boards`)
   //   .then(response => {
   //     setgenerateBoards(response)
-  //       }
-  //   }
+  //     console.log(response, "This is our response")
+  //     // {generateBoards.map(b => {
+  //     //   return <p>{b.generateBoards}</p>
+  //     // })}
+  // }
+  // useEffect(() => {
+  //   displayBoards()
+  // }, [])
 
   return (
     <div>
@@ -72,18 +72,18 @@ const Showboards = ({ props }) => {
         <div className="shown-boards">Personal Boards</div>
       </div>
       <section className="boards">
-        {generateBoards.map(b => {
-          return <p>It works</p>
-        })}
         {/* will be dynamically generated later */}
-        {/* <Link to="/Board">
+        <Link to="/Board">
           <p className="placeholder">Board 1</p>
-        </Link> */}
-        {/* <div className="placeholder"></div>
+        </Link>
+        {generateBoards.map(b => {
+          return <p key={b.id}>{b.name}</p>
+        })}
         <div className="placeholder"></div>
         <div className="placeholder"></div>
         <div className="placeholder"></div>
-        <div className="placeholder"></div> */}
+        <div className="placeholder"></div>
+        <div className="placeholder"></div>
       </section>
       {/* <Link to={`Boards/${Boards.id}`}> */}
       {newBoard ? <Redirect to={`/Boards/${newBoard.id}`} /> : null}

@@ -47,5 +47,6 @@ namespace mello
 
     public DbSet<Boards> Boards {get; set;}
     public DbSet<Cards> Cards {get; set;}
+    public DbSet<Users> Users {get; set;}
   }
 }
