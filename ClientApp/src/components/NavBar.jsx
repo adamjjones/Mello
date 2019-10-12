@@ -66,33 +66,4 @@ const NavBar = props => {
     </div>
   )
 }
-
-{
-  /* <nav classNameName={`top-nav ${props.transparent ? 'top-nav-transparent ' : ''}`}
-                  >
-                    <Link to="/">
-                      
-                    </Link>
-                    
-                    <span classNameName="title">
-                      <span>Mello</span>
-                      <span>
-                        <span classNameName="nav-buttons-right">
-                          
-          
-                          <button id="login">
-                            <span>
-                              <a href="#">
-                                <i classNameName="fas fa-sign-in-alt"></i>
-                              </a>
-                            </span>
-                          </button>
-                        </span>
-                      </span>
-                    </span>
-                  </nav> */
-}
-//   <button className="modal-close is-large" aria-label="close"></button>
-//  </div>
-
 export default NavBar

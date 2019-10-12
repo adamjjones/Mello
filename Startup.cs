@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
@@ -26,6 +27,17 @@ namespace mello
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddAuthentication(options =>
+      {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+      }).AddJwtBearer(options =>
+      {
+        options.RequireHttpsMetadata = false;
+        options.Authority = "dev-dq3m7mok.auth0.com";
+        options.Audience = "ieukwy8ffweADMu7YINOC0Wf5ldan6tj";
+      });
+
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
        .AddJsonOptions(options =>
       {
@@ -63,6 +75,7 @@ namespace mello
       }
       app.UseHealthChecks("/health");
       app.UseHttpsRedirection();
+      app.UseAuthentication();
       app.UseSwagger();
 
       // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 

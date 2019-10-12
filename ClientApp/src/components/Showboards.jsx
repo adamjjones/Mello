@@ -35,30 +35,33 @@ const Showboards = ({ props }) => {
     await axios.delete(`https://localhost:5001/api/Boards/34`)
   }
 
-  const displayBoards = async () => {
-    setBoards = await axios
-      .get('https://localhost:5001/api/Boards')
-      .then(resp => {
-        setBoards(resp)
-        setgenerateBoards(resp)
-        console.log(Boards)
-        return (
-          <div>
-            <p>{Boards}</p>
-          </div>
-        )
-      })
-  }
-
   // const loadBoards = async () => {
-  //   await axios.get(`https://localhost:5001/api/Boards`)
-  //   .then(response => {
+  //   await axios.get(`https://localhost:5001/api/Boards`).then(response => {
   //     setgenerateBoards(response)
-  //     console.log(response, "This is our response")
-  //     // {generateBoards.map(b => {
-  //     //   return <p>{b.generateBoards}</p>
-  //     // })}
+  //     console.log(response, 'This is our response')
+
+  //     {
+  //       generateBoards.map(b => {
+  //         return <p>{b.generateBoards}</p>
+  //       })
+  //     }
+  //   })
+
+  // const displayBoards = async () => {
+  //   setBoards = await axios
+  //     .get('https://localhost:5001/api/Boards')
+  //     .then(resp => {
+  //       setBoards(resp)
+  //       setgenerateBoards(resp)
+  //       console.log(Boards)
+  //       return (
+  //         <div>
+  //           <p>{Boards}</p>
+  //         </div>
+  //       )
+  //     })
   // }
+
   // useEffect(() => {
   //   displayBoards()
   // }, [])
@@ -107,4 +110,5 @@ const Showboards = ({ props }) => {
     </div>
   )
 }
+// }
 export default Showboards

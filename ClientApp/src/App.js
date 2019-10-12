@@ -5,12 +5,43 @@ import Board from './components/Board'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import './components/index.css'
 import 'bulma/css/bulma.css'
-// import './scss/custom.scss'
+import auth from 'auth0-js'
+import Auth from './components/auth'
+import axios from 'axios'
 
 class App extends Component {
+  componentWillMount() {
+    if (Auth.isAuthenticated()) {
+      axios.defaults.headers.common = {
+        Authorization: auth.authorizationHeader()
+      }
+    }
+  }
+
   render() {
     return (
       <>
+        <Route path="/login" render={() => auth.login()} />
+        <Route
+          path="/logout"
+          render={() => {
+            auth.logout()
+            return <p />
+          }}
+        />
+        <Route
+          path="/callback"
+          render={() => {
+            auth.handleAuthentication(() => {
+              // // NOTE: Uncomment the following lines if you are using axios
+              // //
+              axios.defaults.headers.common = {
+                Authorization: auth.authorizationHeader()
+              }
+            })
+            return <p />
+          }}
+        />
         <HomePage />
       </>
     )
