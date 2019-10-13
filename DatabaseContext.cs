@@ -45,8 +45,8 @@ namespace mello
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
 
-    public DbSet<Boards> Boards {get; set;}
-    public DbSet<Cards> Cards {get; set;}
-    public DbSet<Users> Users {get; set;}
+    public DbSet<Boards> Boards { get; set; }
+    public DbSet<Cards> Cards { get; set; }
+    public DbSet<Users> Users { get; set; }
   }
 }

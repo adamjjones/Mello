@@ -5,7 +5,7 @@ import Board from './components/Board'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import './components/index.css'
 import 'bulma/css/bulma.css'
-import auth from 'auth0-js'
+// import auth from 'auth0-js
 import Auth from './components/auth'
 import axios from 'axios'
 
@@ -13,7 +13,7 @@ class App extends Component {
   componentWillMount() {
     if (Auth.isAuthenticated()) {
       axios.defaults.headers.common = {
-        Authorization: auth.authorizationHeader()
+        Authorization: Auth.authorizationHeader()
       }
     }
   }
@@ -21,22 +21,22 @@ class App extends Component {
   render() {
     return (
       <>
-        <Route path="/login" render={() => auth.login()} />
+        <Route path="/login" render={() => Auth.login()} />
         <Route
           path="/logout"
           render={() => {
-            auth.logout()
+            Auth.logout()
             return <p />
           }}
         />
         <Route
           path="/callback"
           render={() => {
-            auth.handleAuthentication(() => {
+            Auth.handleAuthentication(() => {
               // // NOTE: Uncomment the following lines if you are using axios
               // //
               axios.defaults.headers.common = {
-                Authorization: auth.authorizationHeader()
+                Authorization: Auth.authorizationHeader()
               }
             })
             return <p />

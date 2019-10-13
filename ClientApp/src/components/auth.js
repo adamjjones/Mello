@@ -43,7 +43,7 @@ class Auth {
         axios
           .get('/api/Users/check', {
             headers: {
-              Authorization: this.auth0.authorizationHeader()
+              Authorization: this.authorizationHeader()
             }
           })
           .then(resp => {
@@ -58,7 +58,7 @@ class Auth {
                   },
                   {
                     headers: {
-                      Authorization: this.auth0.authorizationHeader()
+                      Authorization: this.authorizationHeader()
                     }
                   }
                 )
