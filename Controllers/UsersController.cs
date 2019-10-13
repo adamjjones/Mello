@@ -6,20 +6,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mello.Models;
-using Microsoft.AspNetCore.Authorization;
+using mello;
 
-namespace mello.Controllers
+namespace sdg_react_template.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  [Authorize]
   public class UsersController : ControllerBase
   {
     private readonly DatabaseContext _context;
 
-    public UsersController()
+    public UsersController(DatabaseContext context)
     {
-      _context = new DatabaseContext();
+      _context = context;
     }
 
     // GET: api/Users
@@ -85,17 +84,12 @@ namespace mello.Controllers
 
     // POST: api/Users
     [HttpPost]
-    public async Task<ActionResult<Users>> PostUsers()
+    public async Task<ActionResult<Users>> PostUsers(Users users)
     {
-      var token = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
-      var user = new Users
-      {
-        AccessToken = token
-      };
-      _context.Users.Add(user);
+      _context.Users.Add(users);
       await _context.SaveChangesAsync();
 
-      return user;
+      return CreatedAtAction("GetUsers", new { id = users.Id }, users);
     }
 
     // DELETE: api/Users/5

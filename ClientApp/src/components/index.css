@@ -9,7 +9,6 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  /* background-image: url('./components/images/HomeBackground.jpg'); */
   background-image: url('images/mello-background.jpg');
   background-size: 100% 100%;
   width: 100%;
@@ -48,31 +47,36 @@ div .navbar {
 }
 
 @media (max-width: 500px) {
-  div .navbar {
-    display: flex;
-    justify-content: center;
+  div .navbar-link {
+    display: none;
   }
 
-  .navbar-item {
+  body {
+    background-image: url('images/mello-background.jpg');
+    height: 200%;
+    width: 200%;
+  }
+
+  .navbar {
     display: flex;
     justify-content: center;
-    padding: 0;
+    width: 200%;
     background-color: white;
     position: absolute;
-    padding: 0.5rem 0.75rem;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
     /* width: 150px; */
   }
 
-  div .navbar-dropdown {
+  .navbar-dropdown {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* margin-right: 50px; */
   }
 
   .title span {
-    display: flex;
-    justify-content: center;
     margin-left: 13rem;
     width: 100px;
   }
@@ -83,12 +87,7 @@ div .navbar {
 }
 
 .navbar-item {
-  display: flex;
-  justify-content: center;
-  padding: 0;
   background-color: white;
-  /* height: 40px; */
-  width: 150px;
 }
 
 .login-main {
@@ -169,4 +168,9 @@ div .navbar {
 .card-input {
   display: flex;
   margin: 20px 0px 0px 20px;
+}
+
+.delete {
+  display: flex;
+  justify-content: flex-end;
 }

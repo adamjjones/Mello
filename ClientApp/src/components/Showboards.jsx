@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NavBar from './NavBar'
 import axios from 'axios'
 import { Link, Redirect } from 'react-router-dom'
 
 const Showboards = ({ props }) => {
-  // let [Boards, setBoards] = useState({})
+  let [Boards, setBoards] = useState({})
   // const [moveToBoard, setMoveToBoard] = useState(false)
   const [newBoard, setNewBoard] = useState(null)
-  // let [generateBoards, setgenerateBoards] = useState([])
+  let [generateBoards, setgenerateBoards] = useState([])
+
+  useEffect(() => {
+    loadBoards()
+  }, [])
+
   const createBoard = async () => {
     await axios
-      .post('https://localhost:5001/api/Boards', {
+      .get('/api/Boards', {
         name: 'something',
         category: 'something else'
       })
@@ -24,21 +29,18 @@ const Showboards = ({ props }) => {
     return <input onClick={handleClick} type="text" />
   }
 
-  const DeleteBoard = async () => {
-    await axios.delete(`https://localhost:5001/api/Boards/34`)
+  const DeleteBoard = async id => {
+    console.log(id)
+    await axios.delete(`/api/Boards/${id.type.value}`)
+    console.log('Deleted')
   }
 
-  // const loadBoards = async () => {
-  //   await axios.get(`https://localhost:5001/api/Boards`).then(response => {
-  //     setgenerateBoards(response)
-  //     console.log(response, 'This is our response')
-
-  //     {
-  //       generateBoards.map(b => {
-  //         return <p>{b.generateBoards}</p>
-  //       })
-  //     }
-  //   })
+  const loadBoards = async () => {
+    console.log('Starting Request')
+    const response = await axios.get(`/api/Boards`)
+    setgenerateBoards(response.data)
+    console.log(response.data, 'This is our response')
+  }
 
   // const displayBoards = async () => {
   //   setBoards = await axios
@@ -55,10 +57,6 @@ const Showboards = ({ props }) => {
   //     })
   // }
 
-  // useEffect(() => {
-  //   displayBoards()
-  // }, [])
-
   return (
     <div>
       <NavBar {...props} />
@@ -72,14 +70,23 @@ const Showboards = ({ props }) => {
         <Link to="/Board">
           <p className="placeholder">Board 1</p>
         </Link>
-        {/* {generateBoards.map(b => {
-          return <p key={b.id}>{b.name}</p>
-        })} */}
-        <div className="placeholder"></div>
-        <div className="placeholder"></div>
-        <div className="placeholder"></div>
-        <div className="placeholder"></div>
-        <div className="placeholder"></div>
+        {generateBoards.map((b, i) => {
+          return (
+            <div className="placeholder" key={i}>
+              <div className="delete">
+                <i
+                  className="fas fa-times"
+                  onClick={() => {
+                    console.log('Clicked')
+                    DeleteBoard(b.Id)
+                  }}
+                ></i>
+              </div>
+              <p>{b.name}</p>
+              <p>{b.category}</p>
+            </div>
+          )
+        })}
       </section>
       {/* <Link to={`Boards/${Boards.id}`}> */}
       {newBoard ? <Redirect to={`/Boards/${newBoard.id}`} /> : null}
@@ -103,5 +110,4 @@ const Showboards = ({ props }) => {
     </div>
   )
 }
-// }
 export default Showboards

@@ -14,19 +14,19 @@ namespace mello.Controllers
   [ApiController]
   public class BoardsController : ControllerBase
   {
-  private readonly DatabaseContext context;
+    private readonly DatabaseContext context;
 
-        public BoardsController(DatabaseContext context)
-        {
-           this.context = context;
-        }
+    public BoardsController(DatabaseContext context)
+    {
+      this.context = context;
+    }
 
     [HttpGet]
-  public ActionResult<IEnumerable<Boards>> GetAllResults()
+    public ActionResult<IEnumerable<Boards>> GetAllResults()
     {
       var Allresults = context.Boards.OrderByDescending(results => results.Id);
       return Allresults.ToList();
-    }  
+    }
 
     // GET api/values/5
     [HttpGet("{id}")]

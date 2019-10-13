@@ -10,7 +10,7 @@ const Board = props => {
   // const [deleteValue, setDeleteValue] = useState('')
   const createCard = async () => {
     await axios
-      .get('https://localhost:5001/api/Cards', {
+      .get('/api/Cards', {
         name: 'A card',
         category: 'Cards'
       })

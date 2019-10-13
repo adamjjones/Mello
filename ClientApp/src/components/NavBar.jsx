@@ -20,7 +20,7 @@ const NavBar = props => {
             <Link to="/" className="navbar-item">
               <span>
                 <i className="fas fa-home"></i>
-                Home
+                <span>Home</span>
               </span>
             </Link>
 
@@ -31,14 +31,12 @@ const NavBar = props => {
               </span>
             </Link>
 
-            <div>
-              <Link to="/Board" className="navbar-item">
-                <span>
-                  <i className="fas fa-plus"></i>
-                  Create
-                </span>
-              </Link>
-            </div>
+            <Link to="/Board" className="navbar-item">
+              <span>
+                <i className="fas fa-plus"></i>
+                <span>Create</span>
+              </span>
+            </Link>
 
             <hr className="navbar-divider" />
             <div className="navbar-item">

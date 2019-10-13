@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using mello;
@@ -9,9 +10,10 @@ using mello;
 namespace sdgreacttemplate.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20191013172422_ChangedUserController")]
+    partial class ChangedUserController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,11 +34,7 @@ namespace sdgreacttemplate.Migrations
 
                     b.Property<string>("UserId");
 
-                    b.Property<int?>("UsersId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UsersId");
 
                     b.ToTable("Boards");
                 });
@@ -73,13 +71,6 @@ namespace sdgreacttemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Mello.Models.Boards", b =>
-                {
-                    b.HasOne("Mello.Models.Users")
-                        .WithMany("Boards")
-                        .HasForeignKey("UsersId");
                 });
 
             modelBuilder.Entity("Mello.Models.Cards", b =>
