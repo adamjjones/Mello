@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import NavBar from './NavBar'
 import axios from 'axios'
-import ReactDOM from 'react-dom'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  Redirect
-} from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 const Showboards = ({ props }) => {
-  let [Boards, setBoards] = useState({})
-  const [moveToBoard, setMoveToBoard] = useState(false)
+  // let [Boards, setBoards] = useState({})
+  // const [moveToBoard, setMoveToBoard] = useState(false)
   const [newBoard, setNewBoard] = useState(null)
-  let [generateBoards, setgenerateBoards] = useState([])
+  // let [generateBoards, setgenerateBoards] = useState([])
   const createBoard = async () => {
     await axios
       .post('https://localhost:5001/api/Boards', {
@@ -79,9 +72,9 @@ const Showboards = ({ props }) => {
         <Link to="/Board">
           <p className="placeholder">Board 1</p>
         </Link>
-        {generateBoards.map(b => {
+        {/* {generateBoards.map(b => {
           return <p key={b.id}>{b.name}</p>
-        })}
+        })} */}
         <div className="placeholder"></div>
         <div className="placeholder"></div>
         <div className="placeholder"></div>

@@ -12,7 +12,9 @@ const NavBar = props => {
         aria-label="dropdown navigation"
       >
         <div className="navbar-item has-dropdown is-hoverable">
-          <a className="navbar-link">Navigation</a>
+          <a href="/" className="navbar-link">
+            Navigation
+          </a>
 
           <div className="navbar-dropdown">
             <Link to="/" className="navbar-item">

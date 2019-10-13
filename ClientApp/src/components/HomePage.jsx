@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  Switch,
-  Link,
-  withRouter
+  Switch
 } from 'react-router-dom'
 import NavBar from './NavBar'
 import Showboards from './Showboards'
 import Board from './Board'
-import AuthO from './auth'
+// import AuthO from './auth'
 
 const HomePage = ({ props }) => {
   return (
@@ -35,7 +33,7 @@ const HomePage = ({ props }) => {
           </Route>
 
           <Route path="/Auth" exact>
-            <AuthO {...props} />
+            {/* <AuthO {...props} /> */}
           </Route>
         </Switch>
       </Router>
