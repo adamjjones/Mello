@@ -1,9 +1,22 @@
 import React, { useState } from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 
 const Card = prop => {
   const [cardInput, setCardInput] = useState('')
   const [showInput, setShowInput] = useState(true)
+  const [cards, setcards] = useState([])
+  const createCard = async () => {
+    await axios
+      .post('/api/Cards', {
+        name: 'A card',
+        category: 'Cards',
+        value: cardInput
+      })
+      .then(resp => {
+        console.log(resp)
+        setcards([...cards, resp.data])
+      })
+  }
 
   return (
     <div
@@ -27,6 +40,7 @@ const Card = prop => {
       <button
         className="add-text"
         onClick={event => {
+          createCard()
           console.log(cardInput)
           return setShowInput(false)
         }}

@@ -1,51 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 import HomePage from './components/HomePage'
-// import Showboards from './components/Showboards'
-// import Board from './components/Board'
-import { Route } from 'react-router-dom'
+import { useAuth0 } from './react-auth0-wrapper'
 import './components/index.css'
 import 'bulma/css/bulma.css'
-// import auth from 'auth0-js
-import Auth from './components/auth'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Profile from './components/Profile'
 import axios from 'axios'
 
-class App extends Component {
-  componentWillMount() {
-    if (Auth.isAuthenticated()) {
-      axios.defaults.headers.common = {
-        Authorization: Auth.authorizationHeader()
-      }
-    }
-  }
-
-  render() {
-    return (
-      <>
-        <Route path="/login" render={() => Auth.login()} />
-        <Route
-          path="/logout"
-          render={() => {
-            Auth.logout()
-            return <p />
-          }}
-        />
-        <Route
-          path="/callback"
-          render={() => {
-            Auth.handleAuthentication(() => {
-              // // NOTE: Uncomment the following lines if you are using axios
-              // //
-              axios.defaults.headers.common = {
-                Authorization: Auth.authorizationHeader()
-              }
-            })
-            return <p />
-          }}
-        />
-        <HomePage />
-      </>
-    )
-  }
+function App() {
+  return (
+    <div className="App">
+      {/* New - use BrowserRouter to provide access to /profile */}
+      <BrowserRouter>
+        <header>
+          <HomePage />
+        </header>
+        <Switch>
+          <Route path="/" exact />
+          <Route path="/profile" component={Profile} />
+        </Switch>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default App

@@ -8,6 +8,7 @@ const Showboards = ({ props }) => {
   // const [moveToBoard, setMoveToBoard] = useState(false)
   const [newBoard, setNewBoard] = useState(null)
   let [generateBoards, setgenerateBoards] = useState([])
+  const [removeBoard, setRemoveBoard] = useState(false)
 
   useEffect(() => {
     loadBoards()
@@ -15,7 +16,7 @@ const Showboards = ({ props }) => {
 
   const createBoard = async () => {
     await axios
-      .get('/api/Boards', {
+      .post('/api/Boards', {
         name: 'something',
         category: 'something else'
       })
@@ -30,9 +31,7 @@ const Showboards = ({ props }) => {
   }
 
   const DeleteBoard = async id => {
-    console.log(id)
-    await axios.delete(`/api/Boards/${id.type.value}`)
-    console.log('Deleted')
+    await axios.get(`/api/Boards/${id}`)
   }
 
   const loadBoards = async () => {
@@ -42,29 +41,14 @@ const Showboards = ({ props }) => {
     console.log(response.data, 'This is our response')
   }
 
-  // const displayBoards = async () => {
-  //   setBoards = await axios
-  //     .get('https://localhost:5001/api/Boards')
-  //     .then(resp => {
-  //       setBoards(resp)
-  //       setgenerateBoards(resp)
-  //       console.log(Boards)
-  //       return (
-  //         <div>
-  //           <p>{Boards}</p>
-  //         </div>
-  //       )
-  //     })
-  // }
-
   return (
     <div>
       <NavBar {...props} />
-      <h1>Available Boards</h1>
-      <div>
+      <h1 className="board-catergory">Available Boards</h1>
+      {/* <div>
         <div className="shown-boards">Recently Viewed</div>
         <div className="shown-boards">Personal Boards</div>
-      </div>
+      </div> */}
       <section className="boards">
         {/* will be dynamically generated later */}
         <Link to="/Board">
@@ -73,15 +57,21 @@ const Showboards = ({ props }) => {
         {generateBoards.map((b, i) => {
           return (
             <div className="placeholder" key={i}>
-              <div className="delete">
+              <div>
                 <i
+                  className="delete"
                   className="fas fa-times"
-                  onClick={() => {
-                    console.log('Clicked')
-                    DeleteBoard(b.Id)
+                  onClick={event => {
+                    console.log()
+                    DeleteBoard(event.id)
+                    if (!removeBoard) {
+                      return setRemoveBoard(true)
+                    }
+                    console.log(removeBoard)
                   }}
                 ></i>
               </div>
+              <p>{'id:' + b.id}</p>
               <p>{b.name}</p>
               <p>{b.category}</p>
             </div>
@@ -99,14 +89,6 @@ const Showboards = ({ props }) => {
         Create Board
       </button>
       {/* </Link> */}
-      <button
-        className="createboard placeholder"
-        onClick={() => {
-          DeleteBoard()
-        }}
-      >
-        Delete Board
-      </button>
     </div>
   )
 }

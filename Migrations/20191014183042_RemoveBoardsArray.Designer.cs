@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using mello;
@@ -9,9 +10,10 @@ using mello;
 namespace sdgreacttemplate.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20191014183042_RemoveBoardsArray")]
+    partial class RemoveBoardsArray
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,15 +48,11 @@ namespace sdgreacttemplate.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BoardId");
-
                     b.Property<int?>("BoardsId");
 
                     b.Property<string>("Content");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("Value");
 
                     b.HasKey("Id");
 
@@ -88,7 +86,7 @@ namespace sdgreacttemplate.Migrations
 
             modelBuilder.Entity("Mello.Models.Cards", b =>
                 {
-                    b.HasOne("Mello.Models.Boards", "Boards")
+                    b.HasOne("Mello.Models.Boards")
                         .WithMany("Cards")
                         .HasForeignKey("BoardsId");
                 });

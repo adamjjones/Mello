@@ -8,17 +8,18 @@ const Board = props => {
   const [cards, setcards] = useState([])
   // const [deleteCards, setDeleteCards] = useState(false)
   // const [deleteValue, setDeleteValue] = useState('')
-  const createCard = async () => {
-    await axios
-      .get('/api/Cards', {
-        name: 'A card',
-        category: 'Cards'
-      })
-      .then(resp => {
-        console.log(resp)
-        setcards([...cards, resp.data])
-      })
-  }
+  // const createCard = async () => {
+  //   await axios
+  //     .post('/api/Cards', {
+  //       name: 'A card',
+  //       category: 'Cards',
+  //       value:
+  //     })
+  //     .then(resp => {
+  //       console.log(resp)
+  //       setcards([...cards, resp.data])
+  //     })
+  // }
 
   // const addCard = () => {
   //   setcards([...cards, { id: 0, name: 'new Card', description: 'desc' }])
@@ -27,13 +28,14 @@ const Board = props => {
   return (
     <div>
       <NavBar {...props} />
-      <button
+      <Card />
+      {/* <button
         onClick={() => {
-          createCard()
+          Card.createCard()
         }}
       >
         Create card
-      </button>
+      </button> */}
       {console.log('cards', cards)}
       {cards.map(card => {
         return <Card key={card.id} card={card} />

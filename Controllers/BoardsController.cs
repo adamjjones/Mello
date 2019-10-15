@@ -24,7 +24,7 @@ namespace mello.Controllers
     [HttpGet]
     public ActionResult<IEnumerable<Boards>> GetAllResults()
     {
-      var Allresults = context.Boards.OrderByDescending(results => results.Id);
+      var Allresults = context.Boards.Include(i => i.Cards).OrderByDescending(results => results.Id);
       return Allresults.ToList();
     }
 
