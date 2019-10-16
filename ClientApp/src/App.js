@@ -17,7 +17,7 @@ function App() {
         </header>
         <Switch>
           <Route path="/" exact />
-          <Route path="/profile" component={Profile} />
+          <Route path="/Profile" component={Profile} exact />
         </Switch>
       </BrowserRouter>
     </div>

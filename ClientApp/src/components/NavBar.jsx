@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { useAuth0 } from '../react-auth0-wrapper'
 
 const NavBar = props => {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
   console.log('props', props)
   return (
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-start">
+    <nav className="navbar" role="navigation" aria-label="main navigation">
+      <div className="navbar-start">
         <Link to="/" className="navbar-item">
           <span>
             <i className="fas fa-home"></i>
@@ -25,19 +26,35 @@ const NavBar = props => {
             <span>Create</span>
           </span>
         </Link>
-        <div class="navbar-item has-dropdown is-hoverable"></div>
+        <div className="navbar-item has-dropdown is-hoverable"></div>
       </div>
       <div className="title">
         <span>Mello</span>
       </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">Log in</a>
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <div className="buttons">
+            {!isAuthenticated && (
+              <a
+                className="button is-primary"
+                onClick={() => loginWithRedirect({})}
+              >
+                Log in or Sign Up
+              </a>
+            )}
+            {isAuthenticated && (
+              <a className="button is-primary" onClick={() => logout()}>
+                Log out
+              </a>
+            )}
+            {isAuthenticated && (
+              <span>
+                <Link to="/">Home</Link>&nbsp;
+                <Link to="/Profile">Profile</Link>
+              </span>
+            )}
+            {/* <a class="button is-light">Log in</a> */}
           </div>
         </div>
       </div>

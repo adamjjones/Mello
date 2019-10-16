@@ -43,6 +43,16 @@ namespace mello.Controllers
       }
     }
 
+    // GET api/values/5/cards
+    [HttpGet("{id}/cards")]
+    public ActionResult GetBoardCards(int id)
+    {
+      var cards = context.Cards.Where(r => r.BoardsId == id);
+
+      return Ok(cards);
+
+    }
+
     // POST api/values
     [HttpPost]
     public ActionResult<Boards> InsertData([FromBody]Boards insertion)

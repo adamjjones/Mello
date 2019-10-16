@@ -11,7 +11,7 @@ namespace Mello.Models
     public string Name { get; set; }
     public string Content { get; set; }
     public string Value { get; set; }
-    public int BoardId { get; set; }
+    public int? BoardsId { get; set; }
     public Boards Boards { get; set; }
 
   }

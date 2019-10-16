@@ -8,7 +8,7 @@ const Showboards = ({ props }) => {
   // const [moveToBoard, setMoveToBoard] = useState(false)
   const [newBoard, setNewBoard] = useState(null)
   let [generateBoards, setgenerateBoards] = useState([])
-  const [removeBoard, setRemoveBoard] = useState(false)
+  const [toggleState, setToggleState] = useState('off')
 
   useEffect(() => {
     loadBoards()
@@ -54,6 +54,7 @@ const Showboards = ({ props }) => {
         <Link to="/Board">
           <p className="placeholder">Board 1</p>
         </Link>
+
         {generateBoards.map((b, i) => {
           return (
             <div className="placeholder" key={i}>
@@ -62,18 +63,17 @@ const Showboards = ({ props }) => {
                   className="delete"
                   className="fas fa-times"
                   onClick={event => {
-                    console.log()
                     DeleteBoard(event.id)
-                    if (!removeBoard) {
-                      return setRemoveBoard(true)
-                    }
-                    console.log(removeBoard)
+                    setToggleState(toggleState === 'off' ? 'on' : 'off')
+                    console.log(toggleState)
                   }}
                 ></i>
               </div>
-              <p>{'id:' + b.id}</p>
-              <p>{b.name}</p>
-              <p>{b.category}</p>
+              <Link to={`/Boards/${b.id}`}>
+                <p>{'id:' + b.id}</p>
+                <p>{b.name}</p>
+                <p>{b.category}</p>
+              </Link>
             </div>
           )
         })}
