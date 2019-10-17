@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 const Card = props => {
-  const [cardInput2, setCardInput2] = useState('')
+  const [cardInput2, setCardInput2] = useState(props.cardValue.value)
   const [showInput2, setShowInput2] = useState(true)
   const [cards2, setCards2] = useState([])
 
@@ -32,7 +32,6 @@ const Card = props => {
             opacity: '0.7',
             width: '300px',
             height: '130px',
-            value: `{props.cardValue.value}`
           }}
         >
           {showInput2 && (
@@ -43,7 +42,7 @@ const Card = props => {
             />
           )}
           {cardInput2.length > 0 && (
-            <h2 className="card-value">{props.match.params.cardValue.value}</h2>
+            <h2 className="card-value">{props.cardValue.value}</h2>
           )}
           <button
             className="add-text"
