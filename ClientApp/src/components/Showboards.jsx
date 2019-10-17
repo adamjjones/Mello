@@ -31,7 +31,12 @@ const Showboards = ({ props }) => {
   }
 
   const DeleteBoard = async id => {
-    await axios.get(`/api/Boards/${id}`)
+    setgenerateBoards(
+      generateBoards.filter(b => {
+        return b.id != id
+      })
+    )
+    await axios.delete(`/api/Boards/${id}`)
   }
 
   const loadBoards = async () => {
@@ -60,10 +65,9 @@ const Showboards = ({ props }) => {
             <div className="placeholder" key={i}>
               <div>
                 <i
-                  className="delete"
-                  className="fas fa-times"
-                  onClick={event => {
-                    DeleteBoard(event.id)
+                  className="delete fas fa-times"
+                  onClick={() => {
+                    DeleteBoard(b.id)
                     setToggleState(toggleState === 'off' ? 'on' : 'off')
                     console.log(toggleState)
                   }}
