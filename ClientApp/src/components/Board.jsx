@@ -27,11 +27,13 @@ const Board = props => {
   }
 
   const getCards = async id => {
-    await axios.get(`/api/Boards/${props.match.params.id}/cards`).then(resp => {
-      console.log('Hey this is our get cards', resp.data)
-      setcards(resp.data)
-      return resp.data
-    })
+    if(props.match) {
+      await axios.get(`/api/Boards/${props.match.params.id}/cards`).then(resp => {
+        console.log('Hey this is our get cards', resp.data)
+        setcards(resp.data)
+        return resp.data
+      })
+    }
   }
 
   // const addCard = () => {
