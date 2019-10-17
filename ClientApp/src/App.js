@@ -15,10 +15,6 @@ function App() {
         <header>
           <HomePage />
         </header>
-        <Switch>
-          <Route path="/" exact />
-          <Route path="/Profile" component={Profile} exact />
-        </Switch>
       </BrowserRouter>
     </div>
   )
