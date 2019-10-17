@@ -29,7 +29,9 @@ const HomePage = ({ props }) => {
           </Route>
 
           <Route path="/Boards/:id" component={Board} exact></Route>
-          <Route path="/Profile" component={Profile} exact />
+          <Route path="/Profile" exact>
+            <Profile {...props} />
+          </Route>
           <Route>
             <Redirect to="/" />
           </Route>
