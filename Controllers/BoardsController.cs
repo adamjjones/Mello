@@ -76,17 +76,16 @@ namespace mello.Controllers
     public ActionResult<Boards> DeleteEntry(int id)
     {
       var board = context.Boards.FirstOrDefault(r => r.Id == id);
-      // context.Cards.RemoveRange(board.Cards);
-      context.Cards.FromSql("Delete from \"Cards\" where Boards.Id = " + id);
-      // foreach (var card in board.Cards)
-      // {
-      //   Console.WriteLine(card.Id);
-      //   // context.Cards(card).State = EntityState.Deleted;
-      //   context.Cards.Remove(card);
-      // }
-      context.SaveChanges();
-      context.Boards.Remove(board);
-      context.SaveChanges();
+      if (board == null)
+      {
+        var cards = context.Cards.Where(card => card.BoardsId == board.Id);
+
+        context.Cards.RemoveRange(cards);
+        context.Boards.Remove(board);
+
+        context.SaveChanges();
+      }
+
       return Ok();
     }
   }
