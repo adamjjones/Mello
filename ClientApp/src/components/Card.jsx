@@ -1,82 +1,49 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 
 const Card = props => {
-  const [cardInput2, setCardInput2] = useState(props.cardValue.value)
-  const [showInput2, setShowInput2] = useState(true)
+  const [showInput, setShowInput] = useState(true)
   const [cards2, setCards2] = useState([])
 
-  const updateCard = async () => {
-    await axios
-      .put(`/api/Cards/${props.match.params.id}`, {
-        value: cardInput2
-      })
-      .then(resp => {
-        console.log(resp)
-        console(cards2)
-        setCards2([...cards2, resp.data.value])
-      })
-  }
-  console.log(cards2)
-
-  const DeleteCard = async id => {
-    setCards2(
-      cards2.filter(card => {
-        return card.id != id
-      })
-    )
-    await axios.delete(`/api/Cards/${id}`)
-  }
-
-  if (props.cardValue.value) {
-    console.log(props.cardValue.value)
-    return (
-      <div>
-        <>
-          <div
-            key={cards2}
-            className="cards"
-            style={{
-              marginBottom: '10px',
-              backgroundColor: `rgb(255, 75, 75)`,
-              opacity: '0.7',
-              width: '300px',
-              height: '130px'
-            }}
-          >
-            <i
-              className="delete fas fa-times"
-              onClick={() => {
-                DeleteCard(props.cardValue.id)
-              }}
-            ></i>
-            {showInput2 && (
-              <input
-                className="card-input"
-                value={cardInput2}
-                onChange={e => setCardInput2(e.target.value)}
-              />
-            )}
-            {cardInput2.length > 0 && (
-              <h2 className="card-value">{props.cardValue.value}</h2>
-            )}
-            <button
-              className="add-text"
-              onClick={event => {
-                updateCard()
-                console.log(cardInput2)
-                return setShowInput2(false)
-              }}
-            >
-              Add
-            </button>
-          </div>
-        </>
+  console.log(props.cardValue.name)
+  return (
+    <div>
+      <div
+        key={props.cardValue.id}
+        className="cards"
+        style={{
+          marginBottom: '10px',
+          backgroundColor: `rgb(255, 75, 75)`,
+          opacity: '0.7',
+          width: '300px',
+          height: '130px'
+        }}
+      >
+        <i
+          className="delete fas fa-times"
+          onClick={() => {
+            props.deleteCard(props.cardValue)
+          }}
+        ></i>
+        {showInput && (
+          <input
+            className="card-input"
+            value={props.cardValue.name}
+            onChange={e => props.setCardInput(props.cardValue.id, 'name', e.target.value)}
+          />
+        )}
+        <h2 className="card-value">{props.cardValue.value}</h2>
+        <button
+          className="add-text"
+          onClick={event => {
+            props.updateCard(props.cardValue)
+           // return setShowInput(false)
+          }}
+        >
+          Update
+        </button>
       </div>
-    )
-  } else {
-    return setCardInput2
-  }
+    </div>
+  )
 }
 
 export default Card

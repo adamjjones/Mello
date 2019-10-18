@@ -5,9 +5,9 @@ import Card from './Card'
 
 const Board = props => {
   // const [cardOpen, setCardOpen] = useState(false)
-  const [cards, setcards] = useState([])
-  const [cardInput, setCardInput] = useState('')
-  const [showInput, setShowInput] = useState(true)
+  const [cards, setCards] = useState([])
+  const [newCardName, setNewCardName] = useState('')
+  // /toconst [showInput, setShowInput] = useState(true)
 
   // const [deleteCards, setDeleteCards] = useState(false)
   // const [deleteValue, setDeleteValue] = useState('')
@@ -15,19 +15,19 @@ const Board = props => {
     console.log({ props })
     await axios
       .post('/api/Cards', {
-        name: 'A card',
+        name: 'new card name',
         category: 'Cards',
-        value: cardInput,
+        value: newCardName,
         boardsId: props.match.params.id
       })
       .then(resp => {
         console.log(resp)
-        setcards([...cards, resp.data])
+        setCards([...cards, resp.data])
       })
   }
 
   // const DeleteCard = async id => {
-  //   setcards(
+  //   setCards(
   //     cards.filter(card => {
   //       return card.id != id
   //     })
@@ -41,7 +41,7 @@ const Board = props => {
         .get(`/api/Boards/${props.match.params.id}/cards`)
         .then(resp => {
           console.log('Hey this is our get cards', resp.data)
-          setcards(resp.data)
+          setCards(resp.data)
           return resp.data
         })
     }
@@ -50,6 +50,40 @@ const Board = props => {
   // const addCard = () => {
   //   setcards([...cards, { id: 0, name: 'new Card', description: 'desc' }])
   // }
+  const updateCard = async (cardValue) => {
+    // curl -X PATCH "https://localhost:5001/api/Cards/7?id=7&q=name" -H  "accept: text/plain" -H  "Content-Type: application/json-patch+json" -d "\"new name\""
+    await axios.patch(`/api/Cards/${cardValue.id}/name`, 
+        cardValue.name,
+        { 
+          headers: {
+            'Content-Type': 'application/json-patch+json'
+          }
+        }
+      ).then(resp => {
+        console.log(resp)
+      })
+  }
+  console.log(cards)
+
+  const deleteCard = async cardValue => {
+    setCards(
+      cards.filter(card => {
+        return card.id != cardValue.id
+      })
+    )
+    await axios.delete(`/api/Cards/${cardValue.id}`)
+  }
+  const setCardInput = (id, fieldName, value) => {
+    const newCards = cards.map(c => {
+      if( c.id === id) {
+        c[fieldName] = value; 
+        console.log("updated card " + id, c);
+      } 
+      return c;
+    }); 
+    setCards(newCards);
+  };
+
 
   useEffect(() => {
     getCards()
@@ -59,50 +93,9 @@ const Board = props => {
     <div>
       <NavBar {...props} />
       <button onClick={createCard}>Create Card</button>
-      <div
-        className="cards"
-        style={{
-          marginBottom: '10px',
-          backgroundColor: `rgb(255, 75, 75)`,
-          opacity: '0.7',
-          width: '300px',
-          height: '130px'
-        }}
-      >
-        {/* <i
-          className="delete fas fa-times"
-          onClick={() => {
-            DeleteCard(cards.id)
-          }}
-        ></i> */}
-        first card
-        {showInput && (
-          <input
-            className="card-input"
-            value={cardInput}
-            onChange={e => setCardInput(e.target.value)}
-          />
-        )}
-        {cardInput.length > 0 && <h2 className="card-value">{cardInput}</h2>}
-        <button
-          className="add-text"
-          onClick={event => {
-            console.log(cardInput)
-            return setShowInput(false)
-          }}
-        >
-          Add
-        </button>
-      </div>
-      {console.log('cards', cards)}
       {cards.map(card => {
-        // if (card.cardInput != null) {
-        return <Card cardValue={card} />
-        // } else {
-        //   return <></>
-        // }
+        return <Card key={card.id} cardValue={card} deleteCard={deleteCard} updateCard={updateCard} setCardInput={setCardInput} />
       })}
-      ;
     </div>
 
     // {deleteValue.lenght >= 0 && <div className="cards">{cardInput}</div>}

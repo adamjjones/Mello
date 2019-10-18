@@ -82,18 +82,18 @@ namespace mello.Controllers
       return CreatedAtAction("GetCards", new { id = cards.Id }, cards);
     }
 
-    [HttpDelete]
-    public async Task<ActionResult<Cards>> DeleteAllCards(Cards cards)
-    {
-      var rows = from o in _context.Cards
-                 select o;
-      foreach (var row in rows)
-      {
-        _context.Cards.Remove(row);
-      }
-      _context.SaveChanges();
-      return cards;
-    }
+    // [HttpDelete]
+    // public async Task<ActionResult<Cards>> DeleteAllCards(Cards cards)
+    // {
+    //   var rows = from o in _context.Cards
+    //              select o;
+    //   foreach (var row in rows)
+    //   {
+    //     _context.Cards.Remove(row);
+    //   }
+    //   _context.SaveChanges();
+    //   return cards;
+    // }
 
     // DELETE: api/Cards/5
     [HttpDelete("{id}")]
@@ -112,7 +112,21 @@ namespace mello.Controllers
     }
 
     //PATCH: api/Cards/id/property
-    [HttpPatch("{id}")]
+    [HttpPatch("{id}/{q}")]
+    public ActionResult<Cards> Patch([FromRoute] int id, [FromRoute] string q, [FromBody] string value)
+    {
+        Console.WriteLine("trying to retrieve card " + id);
+       //  var card = _context.Cards.FirstOrDefault(f => f.Id == id);
+        var card = _context.Cards.Find(id);
+        // Console.WriteLine("retrieved card " + card.ToString());
+        Console.WriteLine("q=" + q);
+        if (q == "name") {
+            card.Name = value;
+            Console.WriteLine("updated card name with " + value);
+        }
+        _context.SaveChanges();
+        return card;
+    }
 
     private bool CardsExists(int id)
     {
