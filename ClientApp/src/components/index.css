@@ -30,10 +30,6 @@ h2 {
   font-size: 18pt;
 }
 
-/* .title {
-  margin-right: 11rem;
-} */
-
 .card-value {
   display: flex;
   flex-direction: row;
@@ -49,6 +45,12 @@ div {
   color: white;
 }
 
+.navbar-start {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;;
+}
+
 div .navbar {
   color: white;
   background-color: yellow;
@@ -57,60 +59,16 @@ div .navbar {
   /* height: 20px; */
   /* padding: 30px; */
 }
-
-@media (max-width: 800px) {
-  .title {
-    display: flex;
-    justify-content: center;
-    margin-left: 5rem;
-    width: 500px;
-  }
+.title {
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
 }
 
-@media (min-width: 300px) {
-  /* div .navbar-link {
-    display: none;
-  } */
 
+@media (min-width: 300px) {
   body {
     background-image: url('images/mello-background.jpg');
     background-repeat: repeat;
-    /* height: 200%;
-    width: 200%; */
-  }
-
-  .navbar-start {
-    display: flex;
-    justify-content: center;
-    /* flex-direction: column; */
-    /* width: 200px; */
-  }
-
-  /* .navbar {
-    display: flex;
-    justify-content: center;
-    width: 200%;
-    background-color: white;
-    position: absolute;
-    padding-top: 0.5rem;
-    padding-right: 0.75rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0.75rem;
-    /* width: 150px; */
-  /* }
-    
-    .navbar-dropdown {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-    } */
-
-  .title {
-    display: flex;
-    justify-self: center;
-    margin-left: 150px;
-    width: 100px;
-    font-family: 'Cedarville Cursive', cursive;
   }
 }
 
@@ -126,48 +84,48 @@ div .navbar {
   margin-bottom: 10px;
 }
 
-@media (max-width: 1023px) {
-  .login-main {
-    display: none;
-  }
-}
-
-@media (min-width: 1023px) {
-  .login {
-    display: none;
-  }
-
-  .title {
-    display: flex;
-    justify-content: center;
-    font-family: 'Cedarville Cursive', cursive;
-    /* margin-right: 20rem; */
-  }
-}
-
-@media (max-width: 1023px) {
-  .title {
-    display: flex;
-    align-items: flex-start;
-    /* margin-right: 15rem; */
-  }
-}
-
 .boards {
   display: flex;
   flex-flow: row wrap;
 }
 
-.placeholder {
-  background-color: #999;
+.board {
+  background-color: #555;
+  border: #AAA 1px solid;
+  padding: 5px;
+  border-radius: 11px;
   margin-top: 20px;
   margin-left: 20px;
   width: 170px;
   height: 100px;
 }
+.viewing-board-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 130%;
+}
+
+.board-name {
+  text-align:center;
+  margin-top: 10px;
+}
+.card-count {
+  text-align:center;
+  position: relative;
+  bottom: -10px;
+}
+.board-category {
+  padding-left: 20px;
+  font-size: 140%;
+  font-weight: bold;;
+}
 
 .createboard {
-  background-color: #abc93d;
+  background-color: #bbd94d;
+  padding: 20px;
+  color: text;
+  font-size: 130%;
+  float: right;
 }
 
 /* .home-content {

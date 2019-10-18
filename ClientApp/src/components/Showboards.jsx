@@ -49,15 +49,19 @@ const Showboards = ({ props }) => {
   return (
     <div>
       <NavBar {...props} />
-      <h1 className="board-catergory">Available Boards</h1>
-      {/* <div>
-        <div className="shown-boards">Recently Viewed</div>
-        <div className="shown-boards">Personal Boards</div>
-      </div> */}
+      <h1 className="board-category">Available Boards</h1>
+      <button
+        className="createboard"
+        onClick={() => {
+          createBoard()
+        }}
+      >
+        Create Board
+      </button>
       <section className="boards">
         {generateBoards.map((b, i) => {
           return (
-            <div className="placeholder" key={i}>
+            <div className="board" key={i}>
               <div>
                 <i
                   className="delete-board fas fa-times"
@@ -67,7 +71,7 @@ const Showboards = ({ props }) => {
                 ></i>
               </div>
               <Link to={`/Boards/${b.id}`}>
-                {/* <p>{'id:' + b.id}</p> */}
+                <p>{'id:' + b.id}</p>
                 <div className='board-name'>{b.name}</div>
                 {/* <p>{b.category}</p> */}
                 <div className='card-count'>{b.cards.length} card{b.cards.length !== 1 ? 's' : ''}</div>
@@ -78,14 +82,6 @@ const Showboards = ({ props }) => {
       </section>
       {/* <Link to={`Boards/${Boards.id}`}> */}
       {newBoard ? <Redirect to={`/Boards/${newBoard.id}`} /> : null}
-      <button
-        className="createboard placeholder"
-        onClick={() => {
-          createBoard()
-        }}
-      >
-        Create Board
-      </button>
       {/* </Link> */}
     </div>
   )

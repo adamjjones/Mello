@@ -9,30 +9,24 @@ const NavBar = props => {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-start">
         <Link to="/" className="navbar-item">
-          <span>
             <i className="fas fa-home"></i>
             <span>Home</span>
-          </span>
         </Link>
         <Link to="/Showboards" className="navbar-item">
-          <span>
             <i className="fas fa-clipboard-list"></i>
             <span>Boards</span>
-          </span>
         </Link>
         <Link to="/Board" className="navbar-item">
-          <span>
             <i className="fas fa-plus"></i>
             <span>Create</span>
+        </Link>
+
+        <Link to="/" className="navbar-item">
+          <span className="title">
+            Mello
           </span>
         </Link>
-        <div className="navbar-item has-dropdown is-hoverable"></div>
-      </div>
-      <div className="title">
-        <h3>Mello</h3>
-      </div>
 
-      <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
             {!isAuthenticated && (

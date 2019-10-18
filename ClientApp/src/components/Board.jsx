@@ -7,6 +7,7 @@ const Board = props => {
   // const [cardOpen, setCardOpen] = useState(false)
   const [cards, setCards] = useState([])
   const [newCardName, setNewCardName] = useState('')
+  const [boardName, setBoardName] = useState('')
   // /toconst [showInput, setShowInput] = useState(true)
 
   // const [deleteCards, setDeleteCards] = useState(false)
@@ -38,9 +39,14 @@ const Board = props => {
   const getCards = async id => {
     if (props.match) {
       await axios
+        .get(`/api/Boards/${props.match.params.id}`)
+        .then(resp => {
+          setBoardName(resp.data.name)
+          return resp.data
+        })
+      await axios
         .get(`/api/Boards/${props.match.params.id}/cards`)
         .then(resp => {
-          console.log('Hey this is our get cards', resp.data)
           setCards(resp.data)
           return resp.data
         })
@@ -89,6 +95,9 @@ const Board = props => {
     <div>
       <NavBar {...props} />
       <button onClick={createCard}>Create Card</button>
+      <div className='board-name'>
+        Viewing Board: {boardName}
+      </div>
       {cards.map(card => {
         return <Card key={card.id} cardValue={card} deleteCard={deleteCard} updateCard={updateCard} setCardInput={setCardInput} />
       })}

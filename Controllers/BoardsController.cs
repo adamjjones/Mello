@@ -76,7 +76,7 @@ namespace mello.Controllers
     public ActionResult<Boards> DeleteEntry(int id)
     {
       var board = context.Boards.FirstOrDefault(r => r.Id == id);
-      if (board == null)
+      if (board != null)
       {
         var cards = context.Cards.Where(card => card.BoardsId == board.Id);
 
