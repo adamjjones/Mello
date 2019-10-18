@@ -201,10 +201,21 @@ div .navbar {
   margin: 20px 0px 0px 20px;
 }
 
-.delete {
-  display: flex;
-  justify-content: flex-end;
+.delete-card {
+  border: black 2px solid;
+  background-color: #880000;
+  padding: 5px;
+  float: right;
+  text-align: right;
 }
+.delete-board {
+  border: black 2px solid;
+  background-color: #880000;
+  padding: 5px;
+  float: right;
+  text-align: right;
+}
+
 
 .profile-img {
   margin-top: 10px;

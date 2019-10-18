@@ -19,6 +19,8 @@ const HomePage = ({ props }) => {
         <Switch>
           <Route path="/" exact>
             <NavBar {...props} />
+            <h1 className="HomePage">Welcome to Mello.</h1>
+            <h3 className="HomePage">A tool for managing to-do tasks.</h3>
           </Route>
 
           <Route path="/Board" exact>
@@ -38,8 +40,6 @@ const HomePage = ({ props }) => {
           </Route>
         </Switch>
       </Router>
-      <h1 className="HomePage">Welcome to Mello.</h1>
-      <h3 className="HomePage">A tool for managing to-do tasks.</h3>
     </div>
   )
 }

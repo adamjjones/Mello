@@ -19,7 +19,7 @@ const Card = props => {
         }}
       >
         <i
-          className="delete fas fa-times"
+          className="delete-card fas fa-times"
           onClick={() => {
             props.deleteCard(props.cardValue)
           }}

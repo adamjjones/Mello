@@ -47,11 +47,7 @@ const Board = props => {
     }
   }
 
-  // const addCard = () => {
-  //   setcards([...cards, { id: 0, name: 'new Card', description: 'desc' }])
-  // }
   const updateCard = async (cardValue) => {
-    // curl -X PATCH "https://localhost:5001/api/Cards/7?id=7&q=name" -H  "accept: text/plain" -H  "Content-Type: application/json-patch+json" -d "\"new name\""
     await axios.patch(`/api/Cards/${cardValue.id}/name`, 
         cardValue.name,
         { 
@@ -97,27 +93,6 @@ const Board = props => {
         return <Card key={card.id} cardValue={card} deleteCard={deleteCard} updateCard={updateCard} setCardInput={setCardInput} />
       })}
     </div>
-
-    // {deleteValue.lenght >= 0 && <div className="cards">{cardInput}</div>}
-    //   <button
-    //     className="add-text"
-    //     onClick={event => {
-    //       console.log(deleteValue)
-    //       return setDeleteCard(true)
-    //     }
-    //   }
-    //   >
-    // Delete
-    //   </button>
-    // {deleteValue.length >= 0 && cardInput}
-    // <button
-    //   className="add-text"
-    //   onClick={(e) => {
-    //     console.log(deleteValue)
-    //     return setDeleteCard(true)
-    //   }}>
-    //   Delete
-    // </button>
   )
 }
 export default Board

@@ -60,16 +60,17 @@ const Showboards = ({ props }) => {
             <div className="placeholder" key={i}>
               <div>
                 <i
-                  className="delete fas fa-times"
+                  className="delete-board fas fa-times"
                   onClick={() => {
                     DeleteBoard(b.id)
                   }}
                 ></i>
               </div>
               <Link to={`/Boards/${b.id}`}>
-                <p>{'id:' + b.id}</p>
-                <p>{b.name}</p>
-                <p>{b.category}</p>
+                {/* <p>{'id:' + b.id}</p> */}
+                <div className='board-name'>{b.name}</div>
+                {/* <p>{b.category}</p> */}
+                <div className='card-count'>{b.cards.length} card{b.cards.length !== 1 ? 's' : ''}</div>
               </Link>
             </div>
           )
