@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  Switch
+  Switch,
+  Link
 } from 'react-router-dom'
 import NavBar from './NavBar'
 import Showboards from './Showboards'
@@ -37,6 +38,8 @@ const HomePage = ({ props }) => {
           </Route>
         </Switch>
       </Router>
+      <h1 className="HomePage">Welcome to Mello.</h1>
+      <h3 className="HomePage">A tool for managing to-do tasks.</h3>
     </div>
   )
 }

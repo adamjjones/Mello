@@ -26,13 +26,24 @@ const Board = props => {
       })
   }
 
+  // const DeleteCard = async id => {
+  //   setcards(
+  //     cards.filter(card => {
+  //       return card.id != id
+  //     })
+  //   )
+  //   await axios.delete(`/api/Cards/${id}`)
+  // }
+
   const getCards = async id => {
-    if(props.match) {
-      await axios.get(`/api/Boards/${props.match.params.id}/cards`).then(resp => {
-        console.log('Hey this is our get cards', resp.data)
-        setcards(resp.data)
-        return resp.data
-      })
+    if (props.match) {
+      await axios
+        .get(`/api/Boards/${props.match.params.id}/cards`)
+        .then(resp => {
+          console.log('Hey this is our get cards', resp.data)
+          setcards(resp.data)
+          return resp.data
+        })
     }
   }
 
@@ -58,6 +69,12 @@ const Board = props => {
           height: '130px'
         }}
       >
+        {/* <i
+          className="delete fas fa-times"
+          onClick={() => {
+            DeleteCard(cards.id)
+          }}
+        ></i> */}
         first card
         {showInput && (
           <input

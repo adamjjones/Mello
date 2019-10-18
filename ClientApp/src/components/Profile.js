@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { useAuth0 } from '../react-auth0-wrapper'
 import NavBar from './NavBar'
 
-const Profile = (props) => {
+const Profile = props => {
   const { loading, user } = useAuth0()
 
   if (loading || !user) {
@@ -12,11 +12,11 @@ const Profile = (props) => {
   return (
     <Fragment>
       <NavBar {...props} />
-      <img src={user.picture} alt="Profile" />
+      <img className="profile-img" src={user.picture} alt="Profile" />
 
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <code>{JSON.stringify(user, null, 2)}</code>
+      <h2>Full name: {user.name}</h2>
+      <p>Email: {user.email}</p>
+      <p>Gender: {user.gender}</p>
     </Fragment>
   )
 }

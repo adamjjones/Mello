@@ -29,7 +29,7 @@ const NavBar = props => {
         <div className="navbar-item has-dropdown is-hoverable"></div>
       </div>
       <div className="title">
-        <span>Mello</span>
+        <h3>Mello</h3>
       </div>
 
       <div className="navbar-end">
@@ -50,7 +50,6 @@ const NavBar = props => {
             )}
             {isAuthenticated && (
               <span>
-                <Link to="/">Home</Link>&nbsp;
                 <Link to="/Profile">Profile</Link>
               </span>
             )}

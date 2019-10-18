@@ -17,15 +17,22 @@ body {
   color: white;
 }
 
+.HomePage {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 4rem;
+}
+
 h1,
 h2 {
   color: white;
   font-size: 18pt;
 }
 
-.title {
-  margin-right: 10rem;
-}
+/* .title {
+  margin-right: 11rem;
+} */
 
 .card-value {
   display: flex;
@@ -51,7 +58,16 @@ div .navbar {
   /* padding: 30px; */
 }
 
-@media (min-width: 500px) {
+@media (max-width: 800px) {
+  .title {
+    display: flex;
+    justify-content: center;
+    margin-left: 5rem;
+    width: 500px;
+  }
+}
+
+@media (min-width: 300px) {
   /* div .navbar-link {
     display: none;
   } */
@@ -63,7 +79,7 @@ div .navbar {
     width: 200%; */
   }
 
-  div .navbar-start {
+  .navbar-start {
     display: flex;
     justify-content: center;
     /* flex-direction: column; */
@@ -89,14 +105,11 @@ div .navbar {
       flex-direction: column;
     } */
 
-  .title span {
-    /* display: flex; */
-    justify-content: center;
-    flex-wrap: nowrap;
-    /* position: absolute; */
-    margin-left: 12rem;
+  .title {
+    display: flex;
+    justify-self: center;
+    margin-left: 150px;
     width: 100px;
-    /* height: 40px; */
     font-family: 'Cedarville Cursive', cursive;
   }
 }
@@ -136,7 +149,7 @@ div .navbar {
   .title {
     display: flex;
     align-items: flex-start;
-    margin-right: 15rem;
+    /* margin-right: 15rem; */
   }
 }
 
@@ -191,4 +204,9 @@ div .navbar {
 .delete {
   display: flex;
   justify-content: flex-end;
+}
+
+.profile-img {
+  margin-top: 10px;
+  border-radius: 50%;
 }

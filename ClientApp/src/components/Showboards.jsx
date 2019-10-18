@@ -55,11 +55,6 @@ const Showboards = ({ props }) => {
         <div className="shown-boards">Personal Boards</div>
       </div> */}
       <section className="boards">
-        {/* will be dynamically generated later */}
-        <Link to="/Board">
-          <p className="placeholder">Board 1</p>
-        </Link>
-
         {generateBoards.map((b, i) => {
           return (
             <div className="placeholder" key={i}>
@@ -68,8 +63,6 @@ const Showboards = ({ props }) => {
                   className="delete fas fa-times"
                   onClick={() => {
                     DeleteBoard(b.id)
-                    setToggleState(toggleState === 'off' ? 'on' : 'off')
-                    console.log(toggleState)
                   }}
                 ></i>
               </div>
