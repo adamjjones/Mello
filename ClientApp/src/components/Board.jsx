@@ -38,12 +38,10 @@ const Board = props => {
 
   const getCards = async id => {
     if (props.match) {
-      await axios
-        .get(`/api/Boards/${props.match.params.id}`)
-        .then(resp => {
-          setBoardName(resp.data.name)
-          return resp.data
-        })
+      await axios.get(`/api/Boards/${props.match.params.id}`).then(resp => {
+        setBoardName(resp.data.name)
+        return resp.data
+      })
       await axios
         .get(`/api/Boards/${props.match.params.id}/cards`)
         .then(resp => {
@@ -53,15 +51,19 @@ const Board = props => {
     }
   }
 
-  const updateCard = async (cardValue) => {
-    await axios.patch(`/api/Cards/${cardValue.id}/name`, 
-        cardValue.name,
-        { 
+  const updateCard = async cardValue => {
+    await axios
+      .patch(
+        `/api/Cards/${cardValue.id}/name`,
+        // encodeURIComponent(cardValue.name),
+        '"' + cardValue.name + '"',
+        {
           headers: {
             'Content-Type': 'application/json-patch+json'
           }
         }
-      ).then(resp => {
+      )
+      .then(resp => {
         console.log(resp)
       })
   }
@@ -77,15 +79,14 @@ const Board = props => {
   }
   const setCardInput = (id, fieldName, value) => {
     const newCards = cards.map(c => {
-      if( c.id === id) {
-        c[fieldName] = value; 
-        console.log("updated card " + id, c);
-      } 
-      return c;
-    }); 
-    setCards(newCards);
-  };
-
+      if (c.id === id) {
+        c[fieldName] = value
+        console.log('updated card ' + id, c)
+      }
+      return c
+    })
+    setCards(newCards)
+  }
 
   useEffect(() => {
     getCards()
@@ -95,11 +96,17 @@ const Board = props => {
     <div>
       <NavBar {...props} />
       <button onClick={createCard}>Create Card</button>
-      <div className='board-name'>
-        Viewing Board: {boardName}
-      </div>
+      <div className="board-name">Viewing Board: {boardName}</div>
       {cards.map(card => {
-        return <Card key={card.id} cardValue={card} deleteCard={deleteCard} updateCard={updateCard} setCardInput={setCardInput} />
+        return (
+          <Card
+            key={card.id}
+            cardValue={card}
+            deleteCard={deleteCard}
+            updateCard={updateCard}
+            setCardInput={setCardInput}
+          />
+        )
       })}
     </div>
   )

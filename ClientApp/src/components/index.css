@@ -48,7 +48,7 @@ div {
 .navbar-start {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;;
+  flex-wrap: wrap;
 }
 
 div .navbar {
@@ -60,10 +60,9 @@ div .navbar {
   /* padding: 30px; */
 }
 .title {
-    font-family: 'Cedarville Cursive', cursive;
-    font-weight: bold;
+  font-family: 'Cedarville Cursive', cursive;
+  font-weight: bold;
 }
-
 
 @media (min-width: 300px) {
   body {
@@ -91,7 +90,7 @@ div .navbar {
 
 .board {
   background-color: #555;
-  border: #AAA 1px solid;
+  border: #aaa 1px solid;
   padding: 5px;
   border-radius: 11px;
   margin-top: 20px;
@@ -106,18 +105,18 @@ div .navbar {
 }
 
 .board-name {
-  text-align:center;
+  text-align: center;
   margin-top: 10px;
 }
 .card-count {
-  text-align:center;
+  text-align: center;
   position: relative;
   bottom: -10px;
 }
 .board-category {
   padding-left: 20px;
   font-size: 140%;
-  font-weight: bold;;
+  font-weight: bold;
 }
 
 .createboard {
@@ -174,8 +173,22 @@ div .navbar {
   text-align: right;
 }
 
-
 .profile-img {
   margin-top: 10px;
   border-radius: 50%;
+}
+
+@media (min-width: 1023px) {
+  .navbar-start {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+  .button {
+    margin-left: 500px;
+  }
 }
