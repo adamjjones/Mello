@@ -6,6 +6,7 @@ import { Auth0Provider } from './react-auth0-wrapper'
 import config from './auth_config.json'
 import { Provider } from "react-redux"
 import { createStore } from "redux"
+import rootReducer from './reducers/rootReducer'
 
 // A function that routes the user to the right place
 // after login
@@ -19,14 +20,6 @@ const onRedirectCallback = appState => {
   )
 }
 
-const initState = {
-  boards: []
-}
-
-const rootReducer = (state = initState, action) => {
-  console.log('state', state)
-  return state;
-}
 const store = createStore(rootReducer)
 
 ReactDOM.render(

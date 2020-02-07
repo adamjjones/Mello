@@ -6,12 +6,10 @@ import Card from './Card'
 const Board = props => {
   // const [cardOpen, setCardOpen] = useState(false)
   const [cards, setCards] = useState([])
-  const [newCardName, setNewCardName] = useState('')
+  const [newCardName] = useState('')
   const [boardName, setBoardName] = useState('')
-  // /toconst [showInput, setShowInput] = useState(true)
+  console.log(cards, newCardName, boardName)
 
-  // const [deleteCards, setDeleteCards] = useState(false)
-  // const [deleteValue, setDeleteValue] = useState('')
   const createCard = async () => {
     console.log({ props })
     await axios
@@ -72,7 +70,7 @@ const Board = props => {
   const deleteCard = async cardValue => {
     setCards(
       cards.filter(card => {
-        return card.id != cardValue.id
+        return card.id !== cardValue.id
       })
     )
     await axios.delete(`/api/Cards/${cardValue.id}`)
@@ -111,4 +109,5 @@ const Board = props => {
     </div>
   )
 }
+
 export default Board

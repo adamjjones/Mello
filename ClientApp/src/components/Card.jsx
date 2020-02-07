@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
 const Card = props => {
-  const [showInput, setShowInput] = useState(true)
-  const [cards2, setCards2] = useState([])
+  const [showInput] = useState(true)
 
   console.log(props.cardValue.name)
   return (
@@ -36,7 +35,7 @@ const Card = props => {
           className="add-text"
           onClick={event => {
             props.updateCard(props.cardValue)
-           // return setShowInput(false)
+            // return setShowInput(false)
           }}
         >
           Update

@@ -9,17 +9,17 @@ const NavBar = props => {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-start">
         <Link to="/" className="navbar-item">
-            <i className="fas fa-home"></i>
-            <span>Home</span>
+          <i className="fas fa-home"></i>
+          <span>Home</span>
         </Link>
         <Link to="/Showboards" className="navbar-item">
-            <i className="fas fa-clipboard-list"></i>
-            <span>Boards</span>
+          <i className="fas fa-clipboard-list"></i>
+          <span>Boards</span>
         </Link>
-        <Link to="/Board" className="navbar-item">
-            <i className="fas fa-plus"></i>
-            <span>Create</span>
-        </Link>
+        {/* <Link to="/Board" className="navbar-item">
+          <i className="fas fa-plus"></i>
+          <span>Create</span>
+        </Link> */}
 
         <Link to="/" className="navbar-item">
           <span className="title">
@@ -30,17 +30,17 @@ const NavBar = props => {
         <div className="navbar-item">
           <div className="buttons">
             {!isAuthenticated && (
-              <a
+              <button
                 className="button is-primary"
                 onClick={() => loginWithRedirect({})}
               >
                 Log in or Sign Up
-              </a>
+              </button>
             )}
             {isAuthenticated && (
-              <a className="button is-primary" onClick={() => logout()}>
+              <button className="button is-primary" onClick={() => logout()}>
                 Log out
-              </a>
+              </button>
             )}
             {isAuthenticated && (
               <span>

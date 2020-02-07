@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import NavBar from './NavBar'
 import axios from 'axios'
 import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 
 const Showboards = ({ props }) => {
-  let [Boards, setBoards] = useState({})
   // const [moveToBoard, setMoveToBoard] = useState(false)
   const [newBoard, setNewBoard] = useState(null)
   let [generateBoards, setgenerateBoards] = useState([])
-  const [toggleState, setToggleState] = useState('off')
 
   useEffect(() => {
     loadBoards()
@@ -33,7 +33,7 @@ const Showboards = ({ props }) => {
   const DeleteBoard = async id => {
     setgenerateBoards(
       generateBoards.filter(b => {
-        return b.id != id
+        return b.id !== id
       })
     )
     await axios.delete(`/api/Boards/${id}`)
@@ -86,4 +86,11 @@ const Showboards = ({ props }) => {
     </div>
   )
 }
-export default Showboards
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+}
+
+export default connect(mapStateToProps)(Showboards)
