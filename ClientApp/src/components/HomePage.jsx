@@ -30,10 +30,10 @@ const HomePage = ({ props }) => {
             <Showboards {...props} />
           </Route>
 
-          {/* <Route path="/Boards/:id" component={Board} exact></Route>
+          <Route path="/Boards/:id" component={Board} exact></Route>
           <Route path="/Profile" exact>
             <Profile {...props} />
-          </Route> */}
+          </Route>
           <Route>
             <Redirect to="/" />
           </Route>
